@@ -2,8 +2,8 @@
 const questionElement=document.getElementById("questions");
 const submitButton=document.getElementById("submit");
 const scoreElement=document.getElementById("score");
-let userAnswers=JSON.parse(sessionStorage.get("progress"))||{};
-const savedScore=localStorage.gettItem("score");
+let userAnswers=JSON.parse(sessionStorage.getItem("progress"))||{};
+const savedScore=localStorage.getItem("score");
 if(savedScore!==null){
 	scoreElement.textContent=`Your score is ${savedScore} out of 5.`;;
 }
@@ -63,7 +63,7 @@ function renderQuestions() {
 }
 renderQuestions();
 
-submitButton.addeventListener("click",()=>{
+submitButton.addEventListener("click",()=>{
 	let score=0;
 	questions.forEach((q,index)=>{
 		if(userAnswers[index]===q.answer){
