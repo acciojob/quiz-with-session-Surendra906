@@ -3,7 +3,7 @@ const questionElement=document.getElementById("questions");
 const submitButton=document.getElementById("submit");
 const scoreElement=document.getElementById("score");
 let userAnswers=JSON.parse(sessionStorage.get("progress"))||{};
-const savedScore=localStorage.gettitem("score");
+const savedScore=localStorage.gettItem("score");
 if(savedScore!==null){
 	scoreElement.textContent=`Your score is ${savedScore} out of 5.`;;
 }
