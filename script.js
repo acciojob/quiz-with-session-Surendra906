@@ -1,4 +1,12 @@
 //your JS code here.
+const questionElement=document.getElementById("questions");
+const submitButton=document.getElementById("submit");
+const scoreElement=document.getElementById("score");
+let userAnswers=JSON.parse(sessionStorage.get("progress"))||{};
+const savedScore=localStorage.gettitem("score");
+if(savedScore!==null){
+	scoreElement.textContent=`Your score is ${savedScore} out of 5.`;;
+}
 
 // Do not change code below this line
 // This code will just display the questions to the screen
@@ -54,3 +62,15 @@ function renderQuestions() {
   }
 }
 renderQuestions();
+
+submitButton.addeventListener("click",()=>{
+	let score=0;
+	questions.forEach((q,index)=>{
+		if(userAnswers[index]===q.answer){
+			score++;
+		}
+	});
+	const scoreText=`Your score is ${score} out of 5. `;
+	scoreElement.textContent=scoreText;
+	localStorage.setItem("score",score);
+});
